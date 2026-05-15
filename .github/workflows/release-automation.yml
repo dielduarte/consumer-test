@@ -1,0 +1,10 @@
+name: Release Automation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  release:
+    uses: dielduarte/shared-workflows/.github/workflows/release-automation.yml@main

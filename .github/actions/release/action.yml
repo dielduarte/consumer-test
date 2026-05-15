@@ -1,0 +1,13 @@
+name: Consumer Release
+description: Build + publish steps specific to this repo
+
+runs:
+  using: composite
+  steps:
+    - name: Release
+      shell: bash
+      run: |
+        echo "🚀 consumer-test: running release hook"
+        echo "  → In react-email this would be: pnpm build + node release.mts"
+        echo "  → In resend-python this would be: python -m build + twine upload"
+        echo "  ✓ Published"

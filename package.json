@@ -5,5 +5,11 @@
   "main": "src/index.js",
   "files": ["src"],
   "author": "dielduarte",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0"
+  }
 }

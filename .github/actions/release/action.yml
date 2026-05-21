@@ -14,6 +14,9 @@ runs:
       shell: bash
       run: npm install -g npm@latest
 
-    - name: Publish to npm (staged)
+    - name: Publish to npm
       shell: bash
-      run: npm stage publish --access public
+      run: |
+        NPM_ID_TOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" | jq -r '.value')
+        NPM_ID_TOKEN="$NPM_ID_TOKEN" NPM_CONFIG_PROVENANCE=true npm publish --access public

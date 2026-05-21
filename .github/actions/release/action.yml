@@ -15,6 +15,14 @@ runs:
       shell: bash
       run: npm install -g npm@latest
 
+    - name: Debug auth
+      shell: bash
+      run: |
+        echo "OIDC URL available: $([[ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]] && echo YES || echo NO)"
+        echo "NODE_AUTH_TOKEN set: $([[ -n "$NODE_AUTH_TOKEN" ]] && echo YES || echo NO)"
+        echo "npm config:"
+        npm config list 2>/dev/null | grep -E "registry|auth|token" || true
+
     - name: Publish to npm (staged)
       shell: bash
       run: npm stage publish --access public

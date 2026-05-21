@@ -8,6 +8,7 @@ runs:
       uses: actions/setup-node@v6
       with:
         node-version: 24
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Update npm
       shell: bash
@@ -16,6 +17,6 @@ runs:
     - name: Publish to npm (staged)
       shell: bash
       run: |
-        TOKEN=$(curl -sS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" \
+        OIDC_TOKEN=$(curl -sS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" \
           -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" | jq -r .value)
-        NPM_ID_TOKEN="$TOKEN" npm stage publish --access public
+        NODE_AUTH_TOKEN="$OIDC_TOKEN" npm stage publish --access public

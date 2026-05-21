@@ -5,3 +5,7 @@ export function hello() {
 export function goodbye() {
   return 'Goodbye from diel-testing!';
 }
+
+export function farewell(name) {
+  return `Farewell, ${name}!`;
+}

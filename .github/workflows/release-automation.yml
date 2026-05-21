@@ -8,3 +8,6 @@ on:
 jobs:
   release:
     uses: dielduarte/shared-workflows/.github/workflows/release-automation.yml@main
+    permissions:
+      id-token: write
+      contents: read

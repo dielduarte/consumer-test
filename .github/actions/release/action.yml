@@ -13,13 +13,9 @@ runs:
       shell: bash
       run: npm install -g npm@latest
 
-    - name: Get npm OIDC token
+    - name: Publish to npm (staged)
       shell: bash
       run: |
         TOKEN=$(curl -sS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" \
           -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" | jq -r .value)
-        echo "NPM_ID_TOKEN=$TOKEN" >> $GITHUB_ENV
-
-    - name: Publish to npm (staged)
-      shell: bash
-      run: npm stage publish --access public
+        NPM_ID_TOKEN="$TOKEN" npm stage publish --access public

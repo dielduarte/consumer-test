@@ -1,9 +1,11 @@
 {
   "name": "diel-testing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Test package for npm staged publishing with trusted publishers",
   "main": "src/index.js",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "author": "dielduarte",
   "license": "MIT",
   "scripts": {

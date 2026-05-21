@@ -10,3 +10,6 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   bump:
     uses: dielduarte/shared-workflows/.github/workflows/bump.yml@main
+    permissions:
+      contents: write
+      pull-requests: write

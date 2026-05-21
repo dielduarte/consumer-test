@@ -12,29 +12,19 @@ runs:
 
     - name: Update npm
       shell: bash
-      run: npm install -g npm@latest
+      run: |
+        npm install -g npm@latest
+        echo "npm version after update: $(npm --version)"
 
-    - name: Debug OIDC env
+    - name: Fetch OIDC token and publish
       shell: bash
       run: |
-        echo "ACTIONS_ID_TOKEN_REQUEST_URL set: $([[ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ]] && echo YES || echo NO)"
-        echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN set: $([[ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]] && echo YES || echo NO)"
-
-    - name: Fetch npm OIDC token
-      shell: bash
-      run: |
-        RESPONSE=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-          "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org")
-        echo "Curl exit code: $?"
-        NPM_ID_TOKEN=$(echo "$RESPONSE" | jq -r '.value // empty')
+        NPM_ID_TOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+          "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" | jq -r '.value // empty')
         if [[ -z "$NPM_ID_TOKEN" ]]; then
-          echo "ERROR: NPM_ID_TOKEN is empty. Raw response: $RESPONSE"
+          echo "ERROR: NPM_ID_TOKEN is empty"
           exit 1
         fi
         echo "NPM_ID_TOKEN fetched (length: ${#NPM_ID_TOKEN})"
-        echo "NPM_ID_TOKEN=$NPM_ID_TOKEN" >> $GITHUB_ENV
-
-    - name: Publish to npm
-      shell: bash
-      run: |
-        NPM_CONFIG_PROVENANCE=true npm publish --access public
+        npm config set //registry.npmjs.org/:_id-token "$NPM_ID_TOKEN"
+        NPM_ID_TOKEN="$NPM_ID_TOKEN" NPM_CONFIG_PROVENANCE=true npm publish --access public --loglevel verbose

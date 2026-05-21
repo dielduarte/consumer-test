@@ -1,5 +1,5 @@
 ---
-"consumer-test": patch
+"diel-testing": patch
 ---
 
-Test changeset to verify the shared release pipeline
+Initial release

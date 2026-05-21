@@ -4,10 +4,8 @@ description: Build + publish steps specific to this repo
 runs:
   using: composite
   steps:
-    - name: Release
+    - name: Publish to npm (staged)
       shell: bash
-      run: |
-        echo "🚀 consumer-test: running release hook"
-        echo "  → In react-email this would be: pnpm build + node release.mts"
-        echo "  → In resend-python this would be: python -m build + twine upload"
-        echo "  ✓ Published"
+      # npm stage publish requires the package to already exist on npm.
+      # For the very first release, run: npm publish --access public
+      run: npm stage publish --access public

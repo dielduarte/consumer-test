@@ -1,5 +1,9 @@
 {
-  "name": "consumer-test",
+  "name": "diel-testing",
   "version": "0.0.1",
-  "private": false
+  "description": "Test package for npm staged publishing with trusted publishers",
+  "main": "src/index.js",
+  "files": ["src"],
+  "author": "dielduarte",
+  "license": "MIT"
 }

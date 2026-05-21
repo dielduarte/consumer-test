@@ -4,6 +4,13 @@ description: Build + publish steps specific to this repo
 runs:
   using: composite
   steps:
+    - name: Setup Node
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        registry-url: 'https://registry.npmjs.org'
+        package-manager-cache: false
+
     - name: Publish to npm (staged)
       shell: bash
       # npm stage publish requires the package to already exist on npm.

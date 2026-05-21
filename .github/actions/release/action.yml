@@ -8,12 +8,17 @@ runs:
       uses: actions/setup-node@v6
       with:
         node-version: 24
-        registry-url: 'https://registry.npmjs.org'
-        token: ''
 
     - name: Update npm
       shell: bash
       run: npm install -g npm@latest
+
+    - name: Get npm OIDC token
+      shell: bash
+      run: |
+        TOKEN=$(curl -sS "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" \
+          -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" | jq -r .value)
+        echo "NPM_ID_TOKEN=$TOKEN" >> $GITHUB_ENV
 
     - name: Publish to npm (staged)
       shell: bash

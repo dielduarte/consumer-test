@@ -9,7 +9,3 @@ export function goodbye() {
 export function farewell(name) {
   return `Farewell, ${name}!`;
 }
-
-export function greet(name) {
-  return `Hello, ${name}!`;
-}

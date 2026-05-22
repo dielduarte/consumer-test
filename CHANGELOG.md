@@ -1,5 +1,11 @@
 # diel-testing
 
+## 0.1.0
+
+### Minor Changes
+
+- 9bfa1b5: Add `greet` function
+
 ## 0.0.2
 
 ### Patch Changes

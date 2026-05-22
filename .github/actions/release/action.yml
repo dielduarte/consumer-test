@@ -17,19 +17,8 @@ runs:
         npm install -g npm@latest
         echo "npm version after update: $(npm --version)"
 
-    - name: Fetch OIDC token
-      shell: bash
-      run: |
-        OIDC_TOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-          "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" | jq -r '.value // empty')
-        if [[ -z "$OIDC_TOKEN" ]]; then
-          echo "ERROR: OIDC token is empty"
-          exit 1
-        fi
-        echo "OIDC token fetched (length: ${#OIDC_TOKEN})"
-        # Override NODE_AUTH_TOKEN that setup-node set to GITHUB_TOKEN
-        echo "NODE_AUTH_TOKEN=$OIDC_TOKEN" >> $GITHUB_ENV
-
     - name: Publish to npm
       shell: bash
+      env:
+        NODE_AUTH_TOKEN: ''
       run: npm stage publish --access public

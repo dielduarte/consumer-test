@@ -5,6 +5,7 @@
     "diel-testing": "0.1.0"
   },
   "changesets": [
-    "add-hi-function"
+    "add-hi-function",
+    "add-whisper-function"
   ]
 }

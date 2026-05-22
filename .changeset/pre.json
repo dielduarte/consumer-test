@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "canary",
+  "initialVersions": {
+    "diel-testing": "0.1.0"
+  },
+  "changesets": []
+}

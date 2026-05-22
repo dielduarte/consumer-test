@@ -1,5 +1,11 @@
 # diel-testing
 
+## 0.2.0-canary.1
+
+### Patch Changes
+
+- 62ae471: Add `whisper` function
+
 ## 0.2.0-canary.0
 
 ### Minor Changes

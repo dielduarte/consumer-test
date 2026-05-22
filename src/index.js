@@ -18,6 +18,14 @@ export function greet(name) {
   return `Hey, ${name}!`;
 }
 
+export function bye(name) {
+  return `See you later, ${name}!`;
+}
+
+export function shout(message) {
+  return message.toUpperCase();
+}
+
 export function hi(name) {
   return `Hi, ${name}!`;
 }

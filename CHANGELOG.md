@@ -1,5 +1,17 @@
 # diel-testing
 
+## 0.1.2
+
+### Patch Changes
+
+- 6ea6fb0: Add `shout` function
+
+## 0.1.1
+
+### Patch Changes
+
+- a628fc0: Add `bye` function
+
 ## 0.1.0
 
 ### Minor Changes

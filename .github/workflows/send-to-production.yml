@@ -8,4 +8,5 @@ jobs:
     uses: dielduarte/shared-workflows/.github/workflows/send-to-production.yml@main
     permissions:
       contents: write
+      actions: write
     secrets: inherit

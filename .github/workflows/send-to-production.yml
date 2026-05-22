@@ -1,0 +1,11 @@
+name: Send to Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  send-to-production:
+    uses: dielduarte/shared-workflows/.github/workflows/send-to-production.yml@main
+    permissions:
+      contents: write
+    secrets: inherit

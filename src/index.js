@@ -21,3 +21,7 @@ export function greet(name) {
 export function bye(name) {
   return `See you later, ${name}!`;
 }
+
+export function shout(message) {
+  return message.toUpperCase();
+}

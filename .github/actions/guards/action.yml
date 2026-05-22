@@ -1,5 +1,5 @@
-name: Consumer CI
-description: CI steps specific to this repo
+name: Consumer Guards
+description: Guards (tests, lint, e2e) specific to this repo
 
 runs:
   using: composite

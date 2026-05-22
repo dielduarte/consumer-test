@@ -1,0 +1,12 @@
+name: Consumer Build
+description: Build steps specific to this repo
+
+runs:
+  using: composite
+  steps:
+    - name: Build
+      shell: bash
+      run: |
+        echo "consumer-test: running build hook"
+        echo "  → In react-email this would be: pnpm build"
+        echo "  ✓ Build complete"

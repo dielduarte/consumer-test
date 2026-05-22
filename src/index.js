@@ -29,3 +29,7 @@ export function shout(message) {
 export function hi(name) {
   return `Hi, ${name}!`;
 }
+
+export function whisper(message) {
+  return message.toLowerCase();
+}

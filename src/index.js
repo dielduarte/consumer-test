@@ -25,3 +25,7 @@ export function bye(name) {
 export function shout(message) {
   return message.toUpperCase();
 }
+
+export function hi(name) {
+  return `Hi, ${name}!`;
+}

@@ -1,0 +1,22 @@
+name: Check Changesets
+description: Check if there are pending changesets
+
+outputs:
+  has_changesets:
+    description: Whether pending changesets exist
+    value: ${{ steps.check.outputs.result }}
+
+runs:
+  using: composite
+  steps:
+    - id: check
+      shell: bash
+      run: |
+        COUNT=$(find .changeset -name "*.md" ! -name "README.md" 2>/dev/null | wc -l | tr -d ' ')
+        if [ "$COUNT" -gt "0" ]; then
+          echo "result=true" >> $GITHUB_OUTPUT
+          echo "Found $COUNT changeset(s) - proceeding with bump"
+        else
+          echo "result=false" >> $GITHUB_OUTPUT
+          echo "No changesets found - skipping bump"
+        fi

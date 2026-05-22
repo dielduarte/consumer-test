@@ -1,0 +1,12 @@
+name: Consumer Notify
+description: Notification steps specific to this repo
+
+runs:
+  using: composite
+  steps:
+    - name: Notify
+      shell: bash
+      run: |
+        echo "consumer-test: running notify hook"
+        echo "  → In production this would post to #bot-github-open-source"
+        echo "  ✓ Notification sent"

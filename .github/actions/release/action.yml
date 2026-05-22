@@ -9,6 +9,7 @@ runs:
       with:
         node-version: 24
         package-manager-cache: false
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Update npm
       shell: bash
@@ -16,14 +17,19 @@ runs:
         npm install -g npm@latest
         echo "npm version after update: $(npm --version)"
 
-    - name: Fetch OIDC token and publish
+    - name: Fetch OIDC token
       shell: bash
       run: |
-        NPM_ID_TOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+        OIDC_TOKEN=$(curl -sH "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
           "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:registry.npmjs.org" | jq -r '.value // empty')
-        if [[ -z "$NPM_ID_TOKEN" ]]; then
-          echo "ERROR: NPM_ID_TOKEN is empty"
+        if [[ -z "$OIDC_TOKEN" ]]; then
+          echo "ERROR: OIDC token is empty"
           exit 1
         fi
-        echo "NPM_ID_TOKEN fetched (length: ${#NPM_ID_TOKEN})"
-        NPM_ID_TOKEN="$NPM_ID_TOKEN" npm stage publish --access public
+        echo "OIDC token fetched (length: ${#OIDC_TOKEN})"
+        # Override NODE_AUTH_TOKEN that setup-node set to GITHUB_TOKEN
+        echo "NODE_AUTH_TOKEN=$OIDC_TOKEN" >> $GITHUB_ENV
+
+    - name: Publish to npm
+      shell: bash
+      run: npm stage publish --access public

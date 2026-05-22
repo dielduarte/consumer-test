@@ -13,3 +13,7 @@ export function farewell(name) {
 export function welcome(name) {
   return `Welcome, ${name}!`;
 }
+
+export function greet(name) {
+  return `Hey, ${name}!`;
+}

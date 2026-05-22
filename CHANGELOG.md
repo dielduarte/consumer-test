@@ -1,5 +1,11 @@
 # diel-testing
 
+## 0.2.0-canary.0
+
+### Minor Changes
+
+- 0d292ca: Add `hi` function
+
 ## 0.1.2
 
 ### Patch Changes

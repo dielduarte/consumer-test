@@ -19,6 +19,7 @@ runs:
 
     - name: Publish to npm
       shell: bash
-      env:
-        NODE_AUTH_TOKEN: ''
-      run: npm stage publish --access public
+      run: |
+        # Remove _authToken from setup-node's .npmrc entirely so npm uses OIDC auto-detection
+        sed -i '/_authToken/d' "$NPM_CONFIG_USERCONFIG"
+        npm stage publish --access public

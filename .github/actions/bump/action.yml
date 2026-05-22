@@ -17,6 +17,10 @@ runs:
       shell: bash
       run: npm ci
 
+    - name: Log pending changesets
+      shell: bash
+      run: npx changeset status --verbose
+
     - name: Create version packages pull request
       uses: changesets/action@v1
       with:

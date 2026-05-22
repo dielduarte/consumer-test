@@ -4,5 +4,7 @@
   "initialVersions": {
     "diel-testing": "0.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "add-hi-function"
+  ]
 }

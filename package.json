@@ -1,6 +1,6 @@
 {
   "name": "diel-testing",
-  "version": "0.1.2",
+  "version": "0.2.0-canary.0",
   "description": "Test package for npm staged publishing with trusted publishers",
   "main": "src/index.js",
   "files": [

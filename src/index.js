@@ -17,3 +17,7 @@ export function welcome(name) {
 export function greet(name) {
   return `Hey, ${name}!`;
 }
+
+export function bye(name) {
+  return `See you later, ${name}!`;
+}

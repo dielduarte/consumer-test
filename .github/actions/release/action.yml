@@ -26,5 +26,4 @@ runs:
           exit 1
         fi
         echo "NPM_ID_TOKEN fetched (length: ${#NPM_ID_TOKEN})"
-        npm config set //registry.npmjs.org/:_id-token "$NPM_ID_TOKEN"
-        NPM_ID_TOKEN="$NPM_ID_TOKEN" NPM_CONFIG_PROVENANCE=true npm publish --access public --loglevel verbose
+        NPM_ID_TOKEN="$NPM_ID_TOKEN" npm stage publish --access public

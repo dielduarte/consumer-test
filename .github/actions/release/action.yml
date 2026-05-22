@@ -1,6 +1,11 @@
 name: Consumer Release
 description: Build + publish steps specific to this repo
 
+inputs:
+  tag:
+    description: npm dist-tag to publish under
+    default: latest
+
 runs:
   using: composite
   steps:
@@ -19,4 +24,4 @@ runs:
       shell: bash
       env:
         NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
-      run: npm stage publish --access public
+      run: npm stage publish --access public --tag ${{ inputs.tag }}

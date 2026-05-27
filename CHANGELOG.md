@@ -1,5 +1,11 @@
 # diel-testing
 
+## 0.2.0-canary.2
+
+### Patch Changes
+
+- 9321e77: Migrate to pnpm and shared js/ reusable workflows
+
 ## 0.2.0-canary.1
 
 ### Patch Changes

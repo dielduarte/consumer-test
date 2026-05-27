@@ -1,5 +1,16 @@
 # diel-testing
 
+## 0.2.0
+
+### Minor Changes
+
+- 0d292ca: Add `hi` function
+
+### Patch Changes
+
+- 62ae471: Add `whisper` function
+- 9321e77: Migrate to pnpm and shared js/ reusable workflows
+
 ## 0.2.0-canary.2
 
 ### Patch Changes

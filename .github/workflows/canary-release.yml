@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    uses: dielduarte/shared-workflows/.github/workflows/js/canary-release.yml@main
+    uses: dielduarte/shared-workflows/.github/workflows/js-canary-release.yml@main
     permissions:
       id-token: write
       contents: read

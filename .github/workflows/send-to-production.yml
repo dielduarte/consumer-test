@@ -5,7 +5,7 @@ on:
 
 jobs:
   send-to-production:
-    uses: dielduarte/shared-workflows/.github/workflows/js/send-to-production.yml@main
+    uses: dielduarte/shared-workflows/.github/workflows/js-send-to-production.yml@main
     permissions:
       contents: write
       actions: write

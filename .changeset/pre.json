@@ -6,6 +6,7 @@
   },
   "changesets": [
     "add-hi-function",
-    "add-whisper-function"
+    "add-whisper-function",
+    "migrate-to-pnpm-js-workflows"
   ]
 }

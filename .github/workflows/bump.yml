@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   bump:
-    uses: dielduarte/shared-workflows/.github/workflows/bump.yml@main
+    uses: dielduarte/shared-workflows/.github/workflows/js-bump.yml@main
     permissions:
       contents: write
       pull-requests: write

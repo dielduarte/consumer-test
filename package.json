@@ -1,6 +1,6 @@
 {
   "name": "diel-testing",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Test package for npm staged publishing with trusted publishers",
   "main": "src/index.js",
   "files": [
@@ -9,9 +9,14 @@
   "author": "dielduarte",
   "license": "MIT",
   "scripts": {
+    "test": "echo \"No tests yet\"",
+    "lint": "echo \"No lint yet\"",
+    "build": "echo \"No build yet\"",
+    "typecheck": "echo \"No typecheck yet\"",
     "version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0"
-  }
+  },
+  "packageManager": "pnpm@11.3.0"
 }
